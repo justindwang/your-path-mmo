@@ -14,10 +14,10 @@ class Player{
     this.discordId = discordId;
     this.type = 'player';
     this.sprite = '';
-    this.inventory = [[new Item(this.game, 'ascension_crystal'), 1], [new Item(this.game, 'descension_crystal'),1],[new Item(this.game, 'job_change_ticket'), 5], [new Item(this.game, 'hp_potion'), 5],[new Item(this.game, 'tiny_mp_potion'), 5], [new Item(this.game, 'soulstone'), 1]];
-    this.skills = [new Skill(this.game, 'final_cut'), new Skill(this.game, 'burst_blade'), new Skill(this.game, 'slash'), new Skill(this.game, 'smash'),new Skill(this.game, 'fireball'), new Skill(this.game, 'far_shot'),new Skill(this.game, 'quick_heal'), new Skill(this.game, 'embrace'), new Skill(this.game, 'vampiric'), new Skill(this.game, 'zen_strike'), new Skill(this.game, 'evade'), new Skill(this.game, 'photosynthesis'), new Skill(this.game, 'haste'), new Skill(this.game, 'bouncy'), new Skill(this.game, 'tunnel'), new Skill(this.game, 'rock_armor'), new Skill(this.game, 'salt_spray'), new Skill(this.game, 'chomp')];
+    this.inventory = [[new Item(this.game, 'descension_crystal'), 1], [new Item(this.game, 'tiny_hp_potion'), 5],[new Item(this.game, 'tiny_mp_potion'), 5]];
+    this.skills = [];
     // does not include current job
-    this.jobs = [new Job('kitsune'), new Job('black_swordsman')];
+    this.jobs = [];
     this.outfits = [new Outfit('casual_hoodie'), new Outfit('casual_blouse')];
     this.stats = this.initializeStats();
 
@@ -33,13 +33,13 @@ class Player{
     this.x = x;
     this.y = y;
 
-    // this.hp = Constants.PLAYER_MAX_HP;
-    // this.hpMax = Constants.PLAYER_MAX_HP;
+    this.hp = Constants.PLAYER_MAX_HP;
+    this.hpMax = Constants.PLAYER_MAX_HP;
     this.mp = Constants.PLAYER_MAX_MP;
     this.mpMax = Constants.PLAYER_MAX_MP;
 
-    this.hp = 200;
-    this.hpMax = 200;
+    // this.hp = 200;
+    // this.hpMax = 200;
 
     this.exp = 0;
     this.expForNext = 10;
@@ -62,7 +62,7 @@ class Player{
 
     this.weapon = new Item(this.game, 'fists');
     this.fusedSkill = new FusedSkill(this);
-    this.skillSlots = 3;
+    this.skillSlots = 2;
     this.applyWeaponStats(this.weapon);
 
     // battle mechanics
@@ -443,11 +443,14 @@ class Player{
     }
   }
 
-  loadArrFromSave(ObjectConstructor, arrayString){
+  loadArrFromSave(ObjectConstructor, arrayString, selfRef){
     var res = [];
     var arr = JSON.parse(arrayString);
     for(var s = 0; s < arr.length; s++){
-      res.push(new ObjectConstructor(this.game, arr[s]));
+      if(selfRef)
+        res.push(new ObjectConstructor(this.game, arr[s]));
+      else
+        res.push(new ObjectConstructor(arr[s]));
     }
     return res;
   }
@@ -486,14 +489,14 @@ class Player{
     this.luck = playerData.luck;
     this.weapon = new Item(this.game, playerData.weapon);
     this.loadInventoryFromSave(playerData.inventory);
-    this.outfits = this.loadArrFromSave(Outfit, playerData.outfits);
-    this.jobs = this.loadArrFromSave(Job, playerData.jobs);
+    this.outfits = this.loadArrFromSave(Outfit, playerData.outfits, false);
+    this.jobs = this.loadArrFromSave(Job, playerData.jobs, false);
     this.loadStatsFromSave(playerData.stats);
 
     this.exp = playerData.exp;
     this.expForNext = playerData.expForNext;
     this.skillSlots = playerData.skillSlots;
-    this.skills = this.loadArrFromSave(Skill, playerData.skills);
+    this.skills = this.loadArrFromSave(Skill, playerData.skills, true);
     this.fusedSkill.load(playerData.fusedSkill);
   }
 

@@ -3,7 +3,7 @@ const { COLORS, findNthTile } = require('./util');
 var TICK_RATE = 20;
 
 module.exports = Object.freeze({
-  PLAYER_MAX_HP: 20,
+  PLAYER_MAX_HP: 200,
   PLAYER_MAX_MP: 10,
 
   MAP_SIZE: 25,

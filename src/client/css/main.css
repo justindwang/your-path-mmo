@@ -3023,7 +3023,7 @@ progress::-webkit-progress-bar {
 
 #stat-points {display: table-cell; padding: 0 0 3px; color: #797979; font-size: 18px; text-align: right; visibility: hidden; opacity: 0;}
 
-#controls-window { position: relative; margin-top: 15px; margin-bottom: 15px; width: 260px; height: 50px; padding: 10px; box-sizing: border-box;}
+#controls-window { position: relative; margin-top: 15px; margin-bottom: 15px; width: 280px; height: 50px; padding: 10px; box-sizing: border-box;}
 #controls-window h3{position: absolute; top: 25%; font-size: 20px; margin: 0 0 0 10px; display: inline;}
 #controls-window span {position: absolute; left: 30%; color: #ffffff33; top: 25%}
 

@@ -5,7 +5,7 @@ const { Item, ITEM_TYPES } = require('./item');
 const Skill = require('./skill');
 const Floor = require('./floor');
 // const LightingROT = require('./lighting-rot');
-const { random, apply2D, getRandomFromRate, getTileDistance, selectRandomElement, sortArrayOfObjects, COLORS, truncateToFiveCharacters, rankComparator, randomColor } = require('../shared/util');
+const { random, apply2D, getRandomFromRate, getTileDistance, selectRandomElement, sortArrayOfObjects, COLORS, truncateToFiveCharacters, rankComparator, randomColor, exportArr } = require('../shared/util');
 const { FLOOR_DATA } = require('../shared/constants');
 
 class Game {
@@ -102,14 +102,17 @@ class Game {
       }
     }
     this.floors[floorNumber].entityManager.move(x, y, entity);
-    // var tile = this.map.get(x, y);
-    // if(tile){
-    //     tile.onEntityEnter(entity);
-    // }
+    
     var item = this.floors[floorNumber].itemManager.getFirst(x, y);
     if(item && item.canAttachTo(entity)){
         this.addItemToInventory(item, entity);
         this.floors[floorNumber].itemManager.remove(item);
+    }
+
+    // floor traversal TODO change to on entity enter 
+    var tile = this.floors[floorNumber].map.get(x, y)
+    if(tile.type == 'exit' && entity.getClass() == 'player'){
+      this.playerChangeFloor(entity, entity.floor + 1);
     }
   }
   getAdjacentPlayers(floorNumber, x, y){
