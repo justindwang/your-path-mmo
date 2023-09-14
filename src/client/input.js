@@ -346,20 +346,37 @@ function renderOutfits(){
 }
 
 // need to add stats cache
+// function renderStats(){
+//   var player = getCurrentState().player;
+//   if(!player)
+//     return;
+//   var stats = player.stats;
+//   if(!stats)
+//     return;
+//   var icon = '';
+//   var color = '';
+//   var html = '';       
+//   for(var i = 0; i< stats.length; i++){
+//       icon = mapGroupToIcon(stats[i].group);
+//       color = rankToColorHtml(stats[i].rank);
+//       html += '<div class="menu-item" id="stats-item-'+ i + '"><div class="menu-item-icon">' + icon + '</div><div class="menu-item-info"><h4>' + color + stats[i].name + ' - ​' + stats[i].rank +'</span> <br> <span>' + stats[i].count + '</span></h4></div></div>';
+//   }
+//   statsBody.innerHTML = html;
+// }
+
+// using stats window to render online players
 function renderStats(){
-  var player = getCurrentState().player;
-  if(!player)
+  var playerList = getCurrentState().playerList;
+  if(!playerList)
     return;
-  var stats = player.stats;
-  if(!stats)
-    return;
+  // var stats = player.stats;
+  // if(!stats)
+  //   return;
   var icon = '';
-  var color = '';
   var html = '';       
-  for(var i = 0; i< stats.length; i++){
-      icon = mapGroupToIcon(stats[i].group);
-      color = rankToColorHtml(stats[i].rank);
-      html += '<div class="menu-item" id="stats-item-'+ i + '"><div class="menu-item-icon">' + icon + '</div><div class="menu-item-info"><h4>' + color + stats[i].name + ' - ​' + stats[i].rank +'</span> <br> <span>' + stats[i].count + '</span></h4></div></div>';
+  for(var i = 0; i< playerList.length; i++){
+      icon = '<img src="assets/icons/' +  playerList[i].sprite + '"/>';
+      html += '<div class="menu-item" id="stats-item-'+ i + '"><div class="menu-item-icon">' + icon + '</div><div class="menu-item-info"><h4>' + playerList[i].name + ' - Lvl ​' + playerList[i].level +'</span> <br> <span>' + playerList[i].job + '</span></h4></div></div>';
   }
   statsBody.innerHTML = html;
 }

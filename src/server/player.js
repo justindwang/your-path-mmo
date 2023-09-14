@@ -538,7 +538,7 @@ class Player{
       name: this.name,
       sprite: this.sprite,
       level: this.level,
-      job: this.job,
+      job: this.job.name,
     };
   }
 
