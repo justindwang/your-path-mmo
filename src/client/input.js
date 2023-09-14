@@ -376,7 +376,7 @@ function renderStats(){
   var html = '';       
   for(var i = 0; i< playerList.length; i++){
       icon = '<img src="assets/icons/' +  playerList[i].sprite + '"/>';
-      html += '<div class="menu-item" id="stats-item-'+ i + '"><div class="menu-item-icon">' + icon + '</div><div class="menu-item-info"><h4>' + playerList[i].name + ' - Lvl ​' + playerList[i].level +'</span> <br> <span>' + playerList[i].job + '</span></h4></div></div>';
+      html += '<div class="menu-item" id="stats-item-'+ i + '"><div class="menu-item-icon">' + icon + '</div><div class="menu-item-info"><h4>' + playerList[i].name + ' - Lvl ​' + playerList[i].level +'</span> <br> <span style="color: #ffffff33;>' + playerList[i].job + '</span></h4></div></div>';
   }
   statsBody.innerHTML = html;
 }
