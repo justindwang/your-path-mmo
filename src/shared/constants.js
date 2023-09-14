@@ -147,16 +147,16 @@ module.exports = Object.freeze({
         entities: {
             '.': 0.649,
             'r': 0.05,
-            's': 0.2,
-            'g': 0.1,
+            's': 0.15,
+            'g': 0.15,
             '-': 0.001
         },
         entitySpawner: {
           rock_snail: 1,
         },
         furnitureSpawner: {
-          salt: 0.6,
-          gravel: 0.395,
+          salt: 0.5,
+          gravel: 0.495,
           crate: 0.005,
         },
         floorBgColor: COLORS.salt_floor,
