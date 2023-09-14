@@ -533,6 +533,15 @@ class Player{
     };
   }
 
+  serializeForPlayerList() {
+    return {
+      name: this.name,
+      sprite: this.sprite,
+      level: this.level,
+      job: this.job,
+    };
+  }
+
   serializeForUpdate() {
     return {
       socketId: this.socketId,

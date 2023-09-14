@@ -295,6 +295,21 @@ class Game {
     return arr;
   }
 
+  serializePlayerList() {
+    const playerArray = Object.keys(this.players).map((key) => ({
+      key,
+      ...this.players[key],
+    }));
+    // Sort the array of objects by the 'age' property in ascending order
+    playerArray.sort((a, b) => b.level - a.level);
+
+    var arr = [];
+    for(var i = 0; i < playerArray.length; i++){
+      arr.push(playerArray[i].serializeForPlayerList());
+    }
+    return arr;
+  }
+
   playerUseItem(player, index, socket){
     var item = player.inventory[index][0];
     var amount = player.inventory[index][1];
@@ -809,6 +824,7 @@ class Game {
       smash: smashLayer,
       damage: damageLayer,
       shop: this.serializeShop(),
+      playerList: this.serializePlayerList(),
     };
   }
 }
