@@ -4,6 +4,8 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const socketio = require('socket.io');
+const https = require('https');
+const fs = require('fs');
 
 const Constants = require('../shared/constants');
 const Game = require('./game');
@@ -22,13 +24,23 @@ if (process.env.NODE_ENV === 'development') {
   app.use(express.static('dist'));
 }
 
-// Listen on port
-const port = process.env.PORT || 3000;
-const server = app.listen(port);
-console.log(`Server listening on port ${port}`);
+// Listen on http
+// const httpPort = process.env.HTTP_PORT || 80;
+// const server = app.listen(httpPort);
+// console.log(`Server listening on port ${httpPort}`);
+
+// Listen on https
+const httpsPort = process.env.HTTPS_PORT || 443;
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/fullchain.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate };
+
+const httpsServer = https.createServer(credentials, app);
+httpsServer.listen(httpsPort);
+console.log(`Server listening on port ${httpsPort}`);
 
 // Setup socket.io
-const io = socketio(server);
+const io = socketio(httpsServer);
 
 // Listen for socket.io connections
 io.on('connection', socket => {
