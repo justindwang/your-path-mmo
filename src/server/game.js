@@ -642,7 +642,7 @@ class Game {
     }
     else{
       this.floors[player.floor].entityManager.remove(player);
-      // delete this.players[socket.id];
+       delete this.players[socket.id];
     }
     delete this.sockets[socket.id];
   }
