@@ -596,6 +596,8 @@ class Player{
       luck: this.luck,
       statPoints: this.statPoints,
 
+      cd: this.maxMoveCd,
+
       weapon: this.weapon.serializeForMenuUpdate(),
       inventory: this.inventory.map(function(arr){
         return arr[0].serializeForMenuUpdate(arr[1]);
