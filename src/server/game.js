@@ -5,7 +5,7 @@ const { Item, ITEM_TYPES } = require('./item');
 const Skill = require('./skill');
 const Floor = require('./floor');
 // const LightingROT = require('./lighting-rot');
-const { random, apply2D, getRandomFromRate, getTileDistance, selectRandomElement, sortArrayOfObjects, COLORS, truncateToFiveCharacters, rankComparator, randomColor, exportArr } = require('../shared/util');
+const { random, apply2D, getRandomFromRate, getTileDistance, selectRandomElement, sortArrayOfObjects, COLORS, truncateToFiveCharacters, rankComparator, randomColor, exportArr, arrFind } = require('../shared/util');
 const { FLOOR_DATA } = require('../shared/constants');
 
 class Game {
@@ -363,29 +363,27 @@ class Game {
             player.applyWeaponStats(item);
             socket.emit(Constants.MSG_TYPES.LOG_MESSAGE, {type:'inventory', message: '- Equipped ' + item.name + ' -'});
         }
-        // else if (item.group == 'skill_scroll'){
-        //     let new_skill = new RL.Skill(this.game, this.game.randomSkillOfRank(item.rank));
-        //     if(amount>1)
-        //         this.inventory[slotNum][1]--;
-        //     else
-        //         this.inventory.splice(slotNum, 1);
-        //     if(RL.Util.arrFindType(this.skills, new_skill.type)){
-        //         this.game.console.logDupeSkill(item, new_skill);
-        //         return;
-        //     }
-        //     // if (this.skills.length < this.skillSlots){
-        //     this.skills.push(new_skill);
-        //     this.game.console.logLearnedSkill(new_skill);
-        //     if(this.game.menu.weaponOrSkills == 'skills')
-        //         this.game.menu.renderSkills();    
-        //     // }
-        //     // else{
-        //     //     this.game.menu.renderSkills();
-        //     //     this.game.console.logReplaceSkillDescription(item, new_skill);
-        //     //     this.game.menu.addSkillReplaceListeners(new_skill);
-        //     //     this.game.input.addBindings({cancel_replace: ['esc']});
-        //     // }
-        // }
+        else if (item.group == 'skill_scroll'){
+            let newSkill = new Skill(this, item.skillType);
+            if(amount>1)
+                player.inventory[index][1]--;
+            else
+                player.inventory.splice(index, 1);
+            if (arrFind(player.skills, 'type', newSkill.type)){
+              socket.emit(Constants.MSG_TYPES.LOG_MESSAGE, {type:'inventory', message: '- Learnt duplicate skill ' + newSkill.name + ' -'});
+            }
+            else{
+              player.skills.push(newSkill);
+              socket.emit(Constants.MSG_TYPES.LOG_MESSAGE, {type:'inventory', message: '- Learnt new skill ' + newSkill.name + ' -'});
+            }
+            // }
+            // else{
+            //     this.game.menu.renderSkills();
+            //     this.game.console.logReplaceSkillDescription(item, new_skill);
+            //     this.game.menu.addSkillReplaceListeners(new_skill);
+            //     this.game.input.addBindings({cancel_replace: ['esc']});
+            // }
+        }
         else if (item.group == 'misc'){
           // passing socket for log message
           item.performUse(player, socket);
@@ -459,11 +457,11 @@ class Game {
   }
 
   playerRespawn(player){
-    let pos = this.generatePlayerStartPosition(player.floor);
+    let pos = this.generatePlayerStartPosition(1);
     player.fullHeal();
     player.sprite = player.outfit.sprite;
     player.dead = false;
-    this.floors[player.floor].entityManager.move(pos[0], pos[1], player);
+    this.playerChangeFloor(player, 1);
   }
 
   playerChangeFloor(player, floor){

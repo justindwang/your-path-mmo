@@ -221,7 +221,8 @@ module.exports = Object.freeze({
 
       },
       loot: {
-          monster_shard: 1,
+          monster_shard: 0.6,
+          bouncy_skill_scroll: 0.4,
       },
   },
     wolf: {
@@ -242,9 +243,10 @@ module.exports = Object.freeze({
           // RL.Actions.Performable.add(this, 'attack');
       },
       loot: {
-          nothing: 0.5,
+          nothing: 0.495,
           monster_shard: 0.45,
-          wolf_fang: 0.05
+          wolf_fang: 0.05,
+          chomp_skill_scroll: 0.005,
       },
     },
     goblin: {

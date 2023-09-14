@@ -70,7 +70,7 @@ var Defaults = {
             };
         },
         getStats: function(){
-            return 'Consumable';
+            return 'Teaches ' + this.skillName;
         },
     },
     weapon: {
@@ -355,48 +355,52 @@ var ITEM_TYPES = {
     }),
 
     // skill scrolls
-    skill_scrollF: makeSkillScroll({
+    bouncy_skill_scroll: makeSkillScroll({
         name: 'Skill Scroll',
+        skillName: 'Bouncy',
+        skillType: 'bouncy',
         sprite: 'skill_scrollF.png',
         rank: 'F',
         cost: 50,
     }),
-    skill_scrollE: makeSkillScroll({
+    chomp_skill_scroll: makeSkillScroll({
         name: 'Skill Scroll',
+        skillName: 'Chomp',
+        skillType: 'chomp',
         sprite: 'skill_scrollE.png',
         rank: 'E',
         cost: 200,
     }),
-    skill_scrollD: makeSkillScroll({
-        name: 'Skill Scroll',
-        sprite: 'skill_scrollD.png',
-        rank: 'D',
-        cost: 600,
-    }),
-    skill_scrollC: makeSkillScroll({
-        name: 'Skill Scroll',
-        sprite: 'skill_scrollC.png',
-        rank: 'C',
-        cost: 1200,
-    }),
-    skill_scrollB: makeSkillScroll({
-        name: 'Skill Scroll',
-        sprite: 'skill_scrollB.png',
-        rank: 'B',
-        cost: 2400,
-    }),
-    skill_scrollA: makeSkillScroll({
-        name: 'Skill Scroll',
-        sprite: 'skill_scrollA.png',
-        rank: 'A',
-        cost: 6000,
-    }),
-    skill_scroll_S: makeSkillScroll({
-        name: 'Skill Scroll',
-        sprite: 'skill_scrollS.png',
-        rank: 'S',
-        cost: 12000,
-    }),
+    // skill_scrollD: makeSkillScroll({
+    //     name: 'Skill Scroll',
+    //     sprite: 'skill_scrollD.png',
+    //     rank: 'D',
+    //     cost: 600,
+    // }),
+    // skill_scrollC: makeSkillScroll({
+    //     name: 'Skill Scroll',
+    //     sprite: 'skill_scrollC.png',
+    //     rank: 'C',
+    //     cost: 1200,
+    // }),
+    // skill_scrollB: makeSkillScroll({
+    //     name: 'Skill Scroll',
+    //     sprite: 'skill_scrollB.png',
+    //     rank: 'B',
+    //     cost: 2400,
+    // }),
+    // skill_scrollA: makeSkillScroll({
+    //     name: 'Skill Scroll',
+    //     sprite: 'skill_scrollA.png',
+    //     rank: 'A',
+    //     cost: 6000,
+    // }),
+    // skill_scroll_S: makeSkillScroll({
+    //     name: 'Skill Scroll',
+    //     sprite: 'skill_scrollS.png',
+    //     rank: 'S',
+    //     cost: 12000,
+    // }),
     // misc items
     job_change_ticket: makeMiscItem({
         name: 'Job Change Ticket',
