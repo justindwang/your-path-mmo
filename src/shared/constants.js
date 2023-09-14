@@ -101,8 +101,8 @@ module.exports = Object.freeze({
     3: {
         name: 'Goblin Caverns',
         entities: {
-            '.': 0.543,
-            'g': 0.1,
+            '.': 0.593,
+            'g': 0.05,
             'b': 0.15,
             'm': 0.1,
             'w': 0.1,
@@ -142,6 +142,39 @@ module.exports = Object.freeze({
             C: 0.05
         }
     },
+    4: {
+        name: 'Salty Flats',
+        entities: {
+            '.': 0.649,
+            'r': 0.05,
+            's': 0.2,
+            'p': 0.1,
+            '-': 0.001
+        },
+        entitySpawner: {
+          rock_snail: 1,
+        },
+        furnitureSpawner: {
+          salt: 0.6,
+          gravel: 0.395,
+          crate: 0.005,
+        },
+        floorBgColor: COLORS.salt_floor,
+        wallBgColor: COLORS.salt_wall,
+        entityCharToType: {
+            r: 'rock_snail',},
+        furnitureCharToType: {
+            s: 'salt',
+            '+': 'door',
+            g: 'gravel',
+            '-': 'crate',},
+        crateLoot: {
+            F: 0.2,
+            E: 0.4,
+            D: 0.3,
+            C: 0.1
+        }
+    },
   },
   ENTITY_TYPES: {
     slime: {
@@ -164,8 +197,8 @@ module.exports = Object.freeze({
   
         },
         loot: {
-            nothing: 0.75,
-            slime_goo: 0.25,
+            nothing: 0.5,
+            monster_shard: 0.5,
         },
     },
     goober: {
@@ -176,7 +209,7 @@ module.exports = Object.freeze({
       hp: 30,
       hpMax: 30,
       strength: 4,
-      exp: 10,
+      exp: 5,
       aggroRange: 0,
       initialize: function() {
           // this.weapon = new RL.Item(this.game, 'goo');
@@ -187,8 +220,7 @@ module.exports = Object.freeze({
 
       },
       loot: {
-          nothing: 0.75,
-          slime_goo: 0.25,
+          monster_shard: 1,
       },
   },
     wolf: {
@@ -196,10 +228,10 @@ module.exports = Object.freeze({
       sprite: 'wolf.png',
       consoleColor: COLORS.dark_gray,
       maxTurnsWithoutStumble: 10,
-      hp: 20,
-      hpMax: 20,
-      strength: 2,
-      exp: 5,
+      hp: 30,
+      hpMax: 30,
+      strength: 3,
+      exp: 10,
       aggroRange: 2,
       initialize: function() {
           // this.weapon = new RL.Item(this.game, 'wolf_fang');
@@ -209,8 +241,8 @@ module.exports = Object.freeze({
           // RL.Actions.Performable.add(this, 'attack');
       },
       loot: {
-          nothing: 0.75,
-          wolf_fur: 0.2,
+          nothing: 0.5,
+          monster_shard: 0.45,
           wolf_fang: 0.05
       },
     },
@@ -219,10 +251,10 @@ module.exports = Object.freeze({
       sprite: 'goblin.png',
       consoleColor: COLORS.green,
       maxTurnsWithoutStumble: 15,
-      hp: 30,
-      hpMax: 30,
+      hp: 50,
+      hpMax: 50,
       strength: 5,
-      exp: 10,
+      exp: 20,
       aggroRange: 3,
       initialize: function() {
           // this.weapon = new RL.Item(this.game, 'rusty_dagger');
@@ -231,7 +263,8 @@ module.exports = Object.freeze({
           // RL.Actions.Performable.add(this, 'attack');
       },
       loot: {
-          nothing: 0.8,
+          nothing: 0.5,
+          monster_shard: 0.3,
           rusty_dagger: 0.15,
           coin_stash: 0.05
       },
@@ -257,6 +290,27 @@ module.exports = Object.freeze({
           coin_stash: 0.5
       },
     },
+    rock_snail: {
+        name: 'Rock Snail',
+        sprite: 'rock_snail.png',
+        consoleColor: COLORS.green,
+        maxTurnsWithoutStumble: 2,
+        hp: 60,
+        hpMax: 60,
+        strength: 10,
+        exp: 40,
+        aggroRange: 1,
+        initialize: function() {
+            // this.weapon = new RL.Item(this.game, 'rusty_dagger');
+            // RL.Actions.Resolvable.add(this, 'attack');
+  
+            // RL.Actions.Performable.add(this, 'attack');
+        },
+        loot: {
+            nothing: 0.3,
+            monster_shard: 0.7,
+        },
+      },
   },
   FURNITURE_TYPES: {
     door: {
@@ -369,6 +423,34 @@ module.exports = Object.freeze({
         consoleColor: COLORS.dirty_water,
         pushable: false,
         passable: false,
+        blocksLos: false,
+        attackable: true,
+        pushable: false,
+        // init: function(){
+        //     RL.Actions.Resolvable.add(this, 'attack');
+        // }
+    },
+    salt:{
+        name: 'Salt',
+        hp: 50,
+        sprite: 'salt.png',
+        consoleColor: COLORS.dirty_water,
+        pushable: false,
+        passable: false,
+        blocksLos: false,
+        attackable: true,
+        pushable: false,
+        // init: function(){
+        //     RL.Actions.Resolvable.add(this, 'attack');
+        // }
+    },
+    gravel:{
+        name: 'Gravel',
+        hp: 1,
+        sprite: 'gravel.png',
+        consoleColor: COLORS.dirty_water,
+        pushable: false,
+        passable: true,
         blocksLos: false,
         attackable: true,
         pushable: false,

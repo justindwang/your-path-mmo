@@ -11,6 +11,8 @@ const ASSET_NAMES = [
   'oak_tree.png',
   'puddle.png',
   'tombstone.png',
+  'salt.png',
+  'gravel.png',
 
   // outfits
   'casual_hoodie.png',
@@ -43,6 +45,7 @@ const ASSET_NAMES = [
   'goblin_king.png',
   'goblin.png',
   'wolf.png',
+  'rock_snail.png',
 
   // items
   'ascension_crystal.png',
@@ -60,6 +63,7 @@ const ASSET_NAMES = [
   'job_change_ticket.png',
   'kings_resent.png',
   'material.png',
+  'monster_shard.png',
   'mp_potion.png',
   'mushroom.png',
   'nails.png',

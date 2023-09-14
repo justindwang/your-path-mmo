@@ -174,7 +174,7 @@ var ITEM_TYPES = {
         name: 'Tiny HP Potion',
         sprite: 'hp_potion.png',
         rank: 'F',
-        healAmount: 5,
+        healAmount: 10,
         cost: 10,
     }),
     tiny_mp_potion: makeMpRecoveryItem({
@@ -190,6 +190,13 @@ var ITEM_TYPES = {
         rank: 'F',
         healAmount: 3,
         cost: 5,
+    }),
+    hp_potion: makeHealingItem({
+        name: 'HP Potion',
+        sprite: 'hp_potion.png',
+        rank: 'E',
+        healAmount: 100,
+        cost: 75,
     }),
 
     // enemy weapons
@@ -319,18 +326,25 @@ var ITEM_TYPES = {
     }),
 
     // material
+    monster_shard: makeMaterial({
+        name: 'Monster Shard',
+        sprite: 'monster_shard.png',
+        rank: 'F',
+        cost: 20,
+    }),
+
     slime_goo: makeMaterial({
         name: 'Slime Goo',
         sprite: 'slime_goo.png',
         rank: 'F',
-        cost: 5,
+        cost: 10,
     }),
 
     wolf_fur: makeMaterial({
         name: 'Wolf Fur',
         sprite: 'wolf_fur.png',
         rank: 'F',
-        cost: 5,
+        cost: 50,
     }),
 
     coin_stash: makeMaterial({
@@ -448,13 +462,6 @@ var ITEM_TYPES = {
         stat2Modifier: 2,
         range: 1,
         cost: 500,
-    }),
-    hp_potion: makeHealingItem({
-        name: 'HP Potion',
-        sprite: 'hp_potion.png',
-        rank: 'C',
-        healAmount: 20,
-        cost: 1000,
     }),
     secret_rocks: makeMaterial({
         name: 'Secret Rocks',

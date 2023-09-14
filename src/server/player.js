@@ -15,6 +15,9 @@ class Player{
     this.type = 'player';
     this.sprite = '';
     this.inventory = [[new Item(this.game, 'descension_crystal'), 1], [new Item(this.game, 'tiny_hp_potion'), 5],[new Item(this.game, 'tiny_mp_potion'), 5]];
+    if(name == 'tests'){
+      this.inventory.push([new Item(this.game, 'ascension_crystal'), 1])
+    }
     this.skills = [];
     // does not include current job
     this.jobs = [];

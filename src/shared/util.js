@@ -402,6 +402,8 @@ module.exports = Object.freeze({
         dirty_water: '#d0eee1',
         cave_floor: '#ab946f',
         cave_wall: '#1e202a',
+        salt_floor: '#f5f5f5',
+        salt_wall: '#e0e0e0',
 
         mp_blue: '#4932b9',
         exp_green: '#77dd77',
