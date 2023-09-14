@@ -275,15 +275,18 @@ class Game {
   }
 
   generateShop(){
-    let temp = [new Item(this, 'tiny_hp_potion'), new Item(this, 'tiny_mp_potion')];
-    temp.push(new Item(this, this.randomItemOfRank('F')));
-    temp.push(new Item(this, this.randomItemOfRank('E')));
-    temp.push(new Item(this, this.randomItemOfRank('D')));
-    temp.push(new Item(this, this.randomItemOfRank('C')));
-    temp.push(new Item(this, this.randomItemOfRank('B')));
-    temp.push(new Item(this, this.randomItemOfRank('A')));
-    temp.push(new Item(this, this.randomItemOfRank('S')));
-    temp.push(new Item(this, 'job_change_ticket'));
+    let items = ['tiny_hp_potion', 'tiny_mp_potion', 'wooden_sword', 'wooden_shield', 'sharp_rock', 'twig', 'hp_potion', 'nails', 'javelin', 'stinger', 'kings_resent', 'desolation', 'whip_of_fortune', 'barans_blades', 'excalibur', 'heavens_arrow', 'job_change_ticket'];
+    // let temp = [new Item(this, 'tiny_hp_potion'), new Item(this, 'tiny_mp_potion')];
+    // temp.push(new Item(this, this.randomItemOfRank('D')));
+    // temp.push(new Item(this, this.randomItemOfRank('C')));
+    // temp.push(new Item(this, this.randomItemOfRank('B')));
+    // temp.push(new Item(this, this.randomItemOfRank('A')));
+    // temp.push(new Item(this, this.randomItemOfRank('S')));
+    // temp.push(new Item(this, 'job_change_ticket'));
+    let temp = []
+    for(var i = 0; i < items.length; i++){
+      temp.push(new Item(this, items[i]));
+    }
     return temp;
   }
 
