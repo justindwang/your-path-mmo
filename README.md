@@ -1,7 +1,7 @@
 Your Path MMO
 =====================
 
-An opensource mmo dungeon crawler browser game written in js using [js-roguelike-skeleton](https://github.com/unstoppablecarl/js-roguelike-skeleton) built on top of [Escape-from-Ecma-Labs](https://github.com/unstoppablecarl/escape-from-ecma-labs)
+An opensource mmo dungeon crawler browser game written in js using [js-roguelike-skeleton](https://github.com/unstoppablecarl/js-roguelike-skeleton)
 
 Play the latest single player version [here](https://justindwang.github.io/your-path/)
 
