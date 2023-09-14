@@ -305,7 +305,7 @@ class Game {
 
     var arr = [];
     for(var i = 0; i < playerArray.length; i++){
-      arr.push(playerArray[i].serializeForPlayerList());
+      arr.push(this.players[playerArray[i].key].serializeForPlayerList());
     }
     return arr;
   }
