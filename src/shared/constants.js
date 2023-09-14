@@ -142,39 +142,40 @@ module.exports = Object.freeze({
             C: 0.05
         }
     },
-    // 4: {
-    //     name: 'Salty Flats',
-    //     entities: {
-    //         '.': 0.649,
-    //         'r': 0.05,
-    //         's': 0.2,
-    //         'g': 0.1,
-    //         '-': 0.001
-    //     },
-    //     entitySpawner: {
-    //       rock_snail: 1,
-    //     },
-    //     furnitureSpawner: {
-    //       salt: 0.6,
-    //       gravel: 0.395,
-    //       crate: 0.005,
-    //     },
-    //     floorBgColor: COLORS.salt_floor,
-    //     wallBgColor: COLORS.salt_wall,
-    //     entityCharToType: {
-    //         r: 'rock_snail',},
-    //     furnitureCharToType: {
-    //         s: 'salt',
-    //         '+': 'door',
-    //         g: 'gravel',
-    //         '-': 'crate',},
-    //     crateLoot: {
-    //         F: 0.2,
-    //         E: 0.4,
-    //         D: 0.3,
-    //         C: 0.1
-    //     }
-    // },
+    4: {
+        name: 'Salty Flats',
+        entities: {
+            '.': 0.649,
+            'r': 0.05,
+            's': 0.2,
+            'g': 0.1,
+            '-': 0.001
+        },
+        entitySpawner: {
+          rock_snail: 1,
+        },
+        furnitureSpawner: {
+          salt: 0.6,
+          gravel: 0.395,
+          crate: 0.005,
+        },
+        floorBgColor: COLORS.salt_floor,
+        wallBgColor: COLORS.salt_wall,
+        entityCharToType: {
+            r: 'rock_snail',},
+        furnitureCharToType: {
+            s: 'salt',
+            '+': 'door',
+            g: 'gravel',
+            '-': 'crate',},
+        itemsCharToType: {},
+        crateLoot: {
+            F: 0.2,
+            E: 0.4,
+            D: 0.3,
+            C: 0.1
+        }
+    },
   },
   ENTITY_TYPES: {
     slime: {
