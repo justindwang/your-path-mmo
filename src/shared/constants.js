@@ -148,7 +148,7 @@ module.exports = Object.freeze({
             '.': 0.649,
             'r': 0.05,
             's': 0.2,
-            'p': 0.1,
+            'g': 0.1,
             '-': 0.001
         },
         entitySpawner: {
