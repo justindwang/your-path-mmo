@@ -15,14 +15,18 @@ const webpackConfig = require('../../webpack.dev.js');
 const app = express();
 app.use(express.static('public'));
 
-if (process.env.NODE_ENV === 'development') {
-  // Setup Webpack for development
-  const compiler = webpack(webpackConfig);
-  app.use(webpackDevMiddleware(compiler));
-} else {
-  // Static serve the dist/ folder in production
-  app.use(express.static('dist'));
-}
+// if (process.env.NODE_ENV === 'development') {
+//   // Setup Webpack for development
+//   const compiler = webpack(webpackConfig);
+//   app.use(webpackDevMiddleware(compiler));
+// } else {
+//   // Static serve the dist/ folder in production
+//   app.use(express.static('dist'));
+// }
+
+// development mode on pm2
+const compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleware(compiler));
 
 // Listen on http
 // const httpPort = process.env.HTTP_PORT || 80;
@@ -175,7 +179,7 @@ async function authenticate(code){
         client_secret: '928btvVzYIuQ3aE0JRXeedXU4GwDfKeB',
         code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://localhost:3000`,
+        redirect_uri: `https://www.yourpathmmo.com`,
         scope: 'identify',
       }).toString(),
       headers: {

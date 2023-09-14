@@ -3,7 +3,7 @@ const { COLORS, findNthTile } = require('./util');
 var TICK_RATE = 20;
 
 module.exports = Object.freeze({
-  PLAYER_MAX_HP: 200,
+  PLAYER_MAX_HP: 20,
   PLAYER_MAX_MP: 10,
 
   MAP_SIZE: 25,
@@ -101,8 +101,8 @@ module.exports = Object.freeze({
     3: {
         name: 'Goblin Caverns',
         entities: {
-            '.': 0.443,
-            'g': 0.2,
+            '.': 0.543,
+            'g': 0.1,
             'b': 0.15,
             'm': 0.1,
             'w': 0.1,
@@ -152,7 +152,7 @@ module.exports = Object.freeze({
         maxTurnsWithoutStumble: 3,
         hp: 10,
         hpMax: 10,
-        strength: 10,
+        strength: 1,
         exp: 2,
         aggroRange: 0,
         initialize: function() {
@@ -175,7 +175,7 @@ module.exports = Object.freeze({
       maxTurnsWithoutStumble: 2,
       hp: 30,
       hpMax: 30,
-      strength: 1,
+      strength: 4,
       exp: 10,
       aggroRange: 0,
       initialize: function() {
