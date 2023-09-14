@@ -174,16 +174,16 @@ class Player{
   }
   applyAgility(){
     var cd = 10;
-    if(this.agility > 10)
-      cd = 9;
-    else if (this.agiliy >= 25)
-      cd = 8;
+    if(this.agility >= 100)
+      cd = 5;
+    else if (this.agiliy >= 75)
+      cd = 6;
     else if (this.agility >= 50)
       cd = 7;
-    else if(this.agility >= 75)
-      cd = 6;
-    else if(this.agility >= 100)
-      cd = 5;
+    else if(this.agility >= 25)
+      cd = 8;
+    else if(this.agility >= 10)
+      cd = 9;
     this.maxMoveCd = cd;
     this.currMoveCd = cd;
     this.maxActionCd = cd;
@@ -595,8 +595,6 @@ class Player{
       intelligence: this.intelligence,
       luck: this.luck,
       statPoints: this.statPoints,
-
-      cd: this.maxMoveCd,
 
       weapon: this.weapon.serializeForMenuUpdate(),
       inventory: this.inventory.map(function(arr){
