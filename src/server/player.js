@@ -15,10 +15,6 @@ class Player{
     this.type = 'player';
     this.sprite = '';
     this.inventory = [[new Item(this.game, 'descension_crystal'), 1], [new Item(this.game, 'tiny_hp_potion'), 5],[new Item(this.game, 'tiny_mp_potion'), 5]];
-    if(name == 'tests'){
-      // this.inventory.push([new Item(this.game, 'bouncy_skill_scroll'), 3]);
-      // this.inventory.push([new Item(this.game, 'chomp_skill_scroll'), 3]);
-    }
     this.skills = [];
     // does not include current job
     this.jobs = [];
@@ -59,10 +55,12 @@ class Player{
     this.pendingAction = false;
     this.bleeds = true;
 
-    this.maxMoveCd = 10;
-    this.currMoveCd = 10;
-    this.maxActionCd = 10;
-    this.currActionCd = 10;
+    // this.maxMoveCd = 10;
+    // this.currMoveCd = 10;
+    // this.maxActionCd = 10;
+    // this.currActionCd = 10;
+
+    this.applyAgility();
 
     this.weapon = new Item(this.game, 'fists');
     this.fusedSkill = new FusedSkill(this);
@@ -72,6 +70,11 @@ class Player{
     // battle mechanics
     this.dodges = 0;
     this.damageReduction = 0;
+
+    if(name == 'tests'){
+      this.agility = 100;
+      this.applyAgility();
+    }
   }
   getClass(){
     return 'player';
@@ -120,6 +123,7 @@ class Player{
   }
   gainExp(expGain){
     this.exp += expGain;
+    // level up
     if(this.exp >= this.expForNext){
         this.exp = 0;
         this.level++;
@@ -140,9 +144,10 @@ class Player{
         this.agility += this.job.agilityGrowth;
         this.luck += this.job.luckGrowth;
         this.statPoints++;
+        this.applyAgility();
         // this.game.console.logLevelUp(this.level);
     }
-}
+  }
   heal(amount){
     this.hp += amount;
     if(this.hp > this.hpMax){
@@ -166,6 +171,23 @@ class Player{
 
   mpGainFromInt(){
      return Math.floor(1234 * Math.tanh(0.0005 * this.intelligence));
+  }
+  applyAgility(){
+    var cd = 10;
+    if(this.agility > 10)
+      cd = 9;
+    else if (this.agiliy >= 25)
+      cd = 8;
+    else if (this.agility >= 50)
+      cd = 7;
+    else if(this.agility >= 75)
+      cd = 6;
+    else if(this.agility >= 100)
+      cd = 5;
+    this.maxMoveCd = cd;
+    this.currMoveCd = cd;
+    this.maxActionCd = cd;
+    this.currActionCd = cd;
   }
   update() {
     // movecd 
