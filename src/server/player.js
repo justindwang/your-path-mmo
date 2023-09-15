@@ -59,8 +59,8 @@ class Player{
     // this.currMoveCd = 10;
     // this.maxActionCd = 10;
     // this.currActionCd = 10;
-    this.mpRegenCd = 20;
-    this.maxMpRegenCd = 20;
+    this.mpRegenCd = 60;
+    this.maxMpRegenCd = 60;
 
     this.applyAgility();
 
