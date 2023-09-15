@@ -31,14 +31,15 @@ Promise.all([
   const fragment = new URLSearchParams(window.location.search);
   const code = fragment.get('code');
   if(code) {
-    authenticate(code);
     console.log('code sending');
+    authenticate(code);
   }
-
-  // guest play
-  startButton.onclick = () => {
+  else{
+    // guest play
+    startButton.onclick = () => {
     characterSetup();
   };
+  }
 }).catch(console.error);
 
 function characterSetup(){
