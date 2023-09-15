@@ -59,6 +59,8 @@ class Player{
     // this.currMoveCd = 10;
     // this.maxActionCd = 10;
     // this.currActionCd = 10;
+    this.mpRegenCd = 20;
+    this.maxMpRegenCd = 20;
 
     this.applyAgility();
 
@@ -198,6 +200,13 @@ class Player{
     // skillcd
     if(this.fusedSkill.currCd > 0)
       this.fusedSkill.currCd--;
+    // mp regen
+    if(this.mpRegenCd > 0)
+      this.mpRegenCd--;
+    else{
+      this.restoreMp(this.mpMax * 0.1);
+      this.mpRegenCd = this.maxMpRegenCd;
+    }
     return;
   }
   move(direction){
