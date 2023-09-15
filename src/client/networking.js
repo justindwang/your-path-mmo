@@ -29,25 +29,43 @@ export const connect = onGameOver => (
 );
 
 export const newPlayer = player => {
-  socket.emit(Constants.MSG_TYPES.NEW_PLAYER, player);
+  if (socket.connected)
+    socket.emit(Constants.MSG_TYPES.NEW_PLAYER, player);
+  else 
+    console.log('Not connected to server.');
 };
 
 export const keyInput = key => {
-  socket.emit(Constants.MSG_TYPES.INPUT, key);
+  if (socket.connected)
+    socket.emit(Constants.MSG_TYPES.INPUT, key);
+  else 
+    console.log('Not connected to server.');
 };
 
 export const mouseMapInput = coords => {
-  socket.emit(Constants.MSG_TYPES.MOUSE_MAP_INPUT, coords);
+  if (socket.connected)
+    socket.emit(Constants.MSG_TYPES.MOUSE_MAP_INPUT, coords);
+  else 
+    console.log('Not connected to server.');
 };
 
 export const menuInput = input => {
-  socket.emit(Constants.MSG_TYPES.MENU_INPUT, input);
+  if (socket.connected)
+    socket.emit(Constants.MSG_TYPES.MENU_INPUT, input);
+  else 
+    console.log('Not connected to server.');
 };
 
 export const authenticate = code => {
-  socket.emit(Constants.MSG_TYPES.AUTHENTICATE, code);
+  if (socket.connected)
+    socket.emit(Constants.MSG_TYPES.AUTHENTICATE, code);
+  else 
+    console.log('Not connected to server.');
 };
 
 export const skillInput = coords => {
-  socket.emit(Constants.MSG_TYPES.SKILL_INPUT, coords);
+  if (socket.connected)
+    socket.emit(Constants.MSG_TYPES.SKILL_INPUT, coords);
+  else 
+    console.log('Not connected to server.');
 }

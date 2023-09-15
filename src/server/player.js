@@ -72,8 +72,7 @@ class Player{
     this.damageReduction = 0;
 
     if(name == 'tests'){
-      this.agility = 100;
-      this.applyAgility();
+      this.inventory.push([new Item(this.game, 'job_change_ticket'), 5]);
     }
   }
   getClass(){

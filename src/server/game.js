@@ -569,15 +569,15 @@ class Game {
     player.sprite = job + '.png';
     
     // give starting skill
-    var skill = null;
-    switch(job){
-      case 'knight': case 'knightess': skill = 'slash'; break;
-      case 'warrior': case 'warrioress': skill = 'smash'; break;
-      case 'mage': case 'sorceress': skill = 'fireball'; break;
-      case 'ranger': case 'archeress': skill = 'far_shot'; break;
-      case 'ninja': case 'kunoichi': skill = 'backstab'; break;
-    }
-    player.skills.push(new Skill(this, skill));
+    // var skill = null;
+    // switch(job){
+    //   case 'knight': case 'knightess': skill = 'slash'; break;
+    //   case 'warrior': case 'warrioress': skill = 'smash'; break;
+    //   case 'mage': case 'sorceress': skill = 'fireball'; break;
+    //   case 'ranger': case 'archeress': skill = 'far_shot'; break;
+    //   case 'ninja': case 'kunoichi': skill = 'backstab'; break;
+    // }
+    player.skills.push(new Skill(this, job.skill));
   }
 
   connectPlayer(socket, playerData) {

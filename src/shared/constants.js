@@ -630,11 +630,10 @@ module.exports = Object.freeze({
         sprite: 'kendoka.png',
         description: 'simple and steadfast',
         outfit: 'keikogi',
-        equipEffect: function(player) {
-            player.learnSkill(new RL.Skill(this.game, 'zen_strike'));
+        skill: 'zen_strike',
+        equipEffect: function() {
         },
-        unequipEffect: function(player){
-            this.game.player.forgetSkill('zen_strike');
+        unequipEffect: function(){
         },
     },
     ivory_reaper: {
@@ -642,11 +641,10 @@ module.exports = Object.freeze({
         sprite: 'ivory_reaper.png',
         description: 'ominous and menacing',
         outfit: 'hooded_cloak',
+        skill: 'final_cut',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'final_cut'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('final_cut');
         },
     },
     flower_fighter: {
@@ -654,11 +652,10 @@ module.exports = Object.freeze({
         sprite: 'flower_fighter.png',
         description: 'graceful and vibrant',
         outfit: 'floral_armor',
+        skill: 'photosynthesis',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'photosynthesis'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('photosynthesis');
         },
     },
     black_swordsman: {
@@ -666,11 +663,10 @@ module.exports = Object.freeze({
         sprite: 'black_swordsman.png',
         description: 'skilled and battle-tested',
         outfit: 'midnight_cloak',
+        skill: 'evade',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'evade'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('evade');
         },
     },
     archery_disciple: {
@@ -678,11 +674,10 @@ module.exports = Object.freeze({
         sprite: 'archery_disciple.png',
         description: 'eager and sharp',
         outfit: 'daopao',
+        skill: 'qi_shot',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'qi_shot'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('qi_shot');
         },
     },
     preschooler: {
@@ -690,11 +685,10 @@ module.exports = Object.freeze({
         sprite: 'preschooler.png',
         description: 'playful and energetic',
         outfit: 'tiny_dress',
+        skill: 'temper_tantrum',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'temper_tantrum'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('temper_tantrum');
         },
     },
     kitsune: {
@@ -702,11 +696,10 @@ module.exports = Object.freeze({
         sprite: 'kitsune.png',
         description: 'mischievous and wise',
         outfit: 'patterned_kimono',
+        skill: 'foxfire',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'foxfire'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('foxfire');
         },
     },
     businessman: {
@@ -714,11 +707,10 @@ module.exports = Object.freeze({
         sprite: 'businessman.png',
         description: 'hardworking and professional',
         outfit: 'work_suit',
+        skill: 'cash_flow',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'cash_flow'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('cash_flow');
         },
     },
     battle_maid: {
@@ -726,11 +718,10 @@ module.exports = Object.freeze({
         sprite: 'battle_maid.png',
         description: 'reliable and thorough',
         outfit: 'lofty_dress',
+        skill: 'clean_finish',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'clean_finish'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('clean_finish');
         },
     },
     enchantress: {
@@ -738,11 +729,10 @@ module.exports = Object.freeze({
         sprite: 'enchantress.png',
         description: 'mystical and alluring',
         outfit: 'autumn_dress',
+        skill: 'embrace',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'embrace'));
         },
         unequipEffect: function(){
-            this.game.player.forgetSkill('embrace');
         },
     },
     
@@ -752,8 +742,8 @@ module.exports = Object.freeze({
         sprite: 'knight.png',
         description: 'trustworthy and noble',
         outfit: 'silver_armor',
+        skill: 'slash',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'slash'));
         },
         unequipEffect: function(){
         },
@@ -763,8 +753,8 @@ module.exports = Object.freeze({
         sprite: 'knightess.png',
         description: 'fearless and gentle',
         outfit: 'cobalt_armor',
+        skill: 'slash',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'slash'));
         },
         unequipEffect: function(){
         },
@@ -774,8 +764,8 @@ module.exports = Object.freeze({
         sprite: 'warrior.png',
         description: 'cheerful and durable',
         outfit: 'trusty_chainmail',
+        skill: 'smash',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'smash'));
         },
         unequipEffect: function(){
         },
@@ -785,8 +775,8 @@ module.exports = Object.freeze({
         sprite: 'warrioress.png',
         description: 'brave and dependable',
         outfit: 'leather_chainmail',
+        skill: 'smash',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'smash'));
         },
         unequipEffect: function(){
         },
@@ -796,8 +786,8 @@ module.exports = Object.freeze({
         sprite: 'ranger.png',
         description: 'keen and accurate',
         outfit: 'green_rags',
+        skill: 'far_shot',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'far_shot'));
         },
         unequipEffect: function(){
         },
@@ -807,8 +797,8 @@ module.exports = Object.freeze({
         sprite: 'archeress.png',
         description: 'swift and majestic',
         outfit: 'flowy_rags',
+        skill: 'far_shot',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'far_shot'));
         },
         unequipEffect: function(){
         },
@@ -818,8 +808,8 @@ module.exports = Object.freeze({
         sprite: 'mage.png',
         description: 'witty and resourceful',
         outfit: 'blue_robe',
+        skill: 'fireball',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'fireball'));
         },
         unequipEffect: function(){
         },
@@ -829,8 +819,8 @@ module.exports = Object.freeze({
         sprite: 'sorceress.png',
         description: 'young and curious',
         outfit: 'purple_robe',
+        skill: 'fireball',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'fireball'));
         },
         unequipEffect: function(){
         },
@@ -840,8 +830,8 @@ module.exports = Object.freeze({
         sprite: 'ninja.png',
         description: 'silent and deadly',
         outfit: 'ninja_gear',
+        skill: 'backstab',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'backstab'));
         },
         unequipEffect: function(){
         },
@@ -851,8 +841,8 @@ module.exports = Object.freeze({
         sprite: 'kunoichi.png',
         description: 'patient and agile',
         outfit: 'black_haori',
+        skill: 'backstab',
         equipEffect: function() {
-            this.game.player.learnSkill(new RL.Skill(this.game, 'backstab'));
         },
         unequipEffect: function(){
         },

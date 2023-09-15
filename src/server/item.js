@@ -2,6 +2,7 @@ const { merge, mapRankToColor, selectRandomElement, arrFind } = require('../shar
 const Constants = require('../shared/constants');
 const Job = require('./job');
 const Outfit = require('./outfit');
+const Skill = require('./skill');
 
 var makeHealingItem = function(obj){
     return merge(obj, Defaults.healing);
@@ -422,8 +423,9 @@ var ITEM_TYPES = {
             }
             else{
                 player.jobs.push(newJob);
-                var newOutfit = new Outfit(newJob.outfit)
+                var newOutfit = new Outfit(newJob.outfit);
                 player.outfits.push(newOutfit);
+                player.skills.push(new Skill(this.game, newJob.skill));
                 socket.emit(Constants.MSG_TYPES.LOG_MESSAGE, {type:'inventory', message: '- ' +newJob.name+ ' added to jobs -<br>- '+ newOutfit.name + ' added to outfits -'});
             }
         },
