@@ -577,7 +577,7 @@ class Game {
     //   case 'ranger': case 'archeress': skill = 'far_shot'; break;
     //   case 'ninja': case 'kunoichi': skill = 'backstab'; break;
     // }
-    player.skills.push(new Skill(this, job.skill));
+    player.skills.push(new Skill(this, player.job.skill));
   }
 
   connectPlayer(socket, playerData) {
