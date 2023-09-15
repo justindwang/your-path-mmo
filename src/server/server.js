@@ -57,6 +57,13 @@ io.on('connection', socket => {
   socket.on(Constants.MSG_TYPES.MOUSE_MAP_INPUT, handleMouseMapInput);
   socket.on(Constants.MSG_TYPES.MENU_INPUT, handleMenuInput);
   socket.on('disconnect', onDisconnect);
+
+  // maybe to fix disconnected sockets
+  socket.on('clientError', (error) => {
+    console.error('Socket client error:', error);
+    socket.destroy();
+  });
+  
 });
 
 function createTable() {
