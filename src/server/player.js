@@ -204,7 +204,7 @@ class Player{
     if(this.mpRegenCd > 0)
       this.mpRegenCd--;
     else{
-      this.restoreMp(this.mpMax * 0.1);
+      this.restoreMp(Math.floor(this.mpMax * 0.1));
       this.mpRegenCd = this.maxMpRegenCd;
     }
     return;
@@ -594,7 +594,7 @@ class Player{
       y: this.y,
 
       hp: this.hp,
-      hpMax: this.hpMax,
+      hpMax: this.hpMax,x
       mp: this.mp,
       mpMax: this.mpMax,
       strength: this.strength,
