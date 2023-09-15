@@ -594,7 +594,7 @@ class Player{
       y: this.y,
 
       hp: this.hp,
-      hpMax: this.hpMax,x
+      hpMax: this.hpMax,
       mp: this.mp,
       mpMax: this.mpMax,
       strength: this.strength,
