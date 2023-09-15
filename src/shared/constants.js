@@ -319,6 +319,7 @@ module.exports = Object.freeze({
     door: {
         name: 'Door',
         hp: 5,
+        hpMax: 5,
         sprite: 'door.png',
         consoleColor: COLORS.yellow,
         passable: false,
@@ -335,6 +336,7 @@ module.exports = Object.freeze({
     crate: {
         name: 'Crate',
         hp: 5,
+        hpMax: 5,
         sprite: 'crate.png',
         consoleColor: COLORS.yellow,
         pushable: false,
@@ -351,6 +353,7 @@ module.exports = Object.freeze({
     bush: {
         name: 'Bush',
         hp: 1,
+        hpMax: 1,
         sprite: 'bush.png',
         consoleColor: COLORS.green,
         pushable: true,
@@ -367,6 +370,7 @@ module.exports = Object.freeze({
     leaf_pile: {
         name: 'Leaf Pile',
         hp: 5,
+        hpMax: 5,
         sprite: 'leaf_pile.png',
         consoleColor: COLORS.green,
         pushable: false,
@@ -381,6 +385,7 @@ module.exports = Object.freeze({
     oak_tree:{
         name: 'Oak Tree',
         hp: 15,
+        hpMax: 15,
         sprite: 'oak_tree.png',
         consoleColor: COLORS.golden_oak,
         pushable: false,
@@ -395,6 +400,7 @@ module.exports = Object.freeze({
     boulder:{
         name: 'Boulder',
         hp: 30,
+        hpMax: 30,
         sprite: 'boulder.png',
         consoleColor: COLORS.gray,
         pushable: false,
@@ -409,6 +415,7 @@ module.exports = Object.freeze({
     mud:{
         name: 'Mud',
         hp: 1,
+        hpMax: 1,
         sprite: 'mud.png',
         consoleColor: COLORS.brown,
         pushable: false,
@@ -422,6 +429,7 @@ module.exports = Object.freeze({
     puddle:{
         name: 'Puddle',
         hp: 1,
+        hpMax: 1,
         sprite: 'puddle.png',
         consoleColor: COLORS.dirty_water,
         pushable: false,
@@ -436,6 +444,7 @@ module.exports = Object.freeze({
     salt:{
         name: 'Salt',
         hp: 50,
+        hpMax: 50,
         sprite: 'salt.png',
         consoleColor: COLORS.dirty_water,
         pushable: false,
@@ -450,6 +459,7 @@ module.exports = Object.freeze({
     gravel:{
         name: 'Gravel',
         hp: 1,
+        hpMax: 1,
         sprite: 'gravel.png',
         consoleColor: COLORS.dirty_water,
         pushable: false,

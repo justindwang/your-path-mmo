@@ -48,6 +48,8 @@ class Furniture {
     serializeForUpdate() {
         return {
           sprite: this.sprite,
+          hp: this.hp,
+          hpMax: this.hpMax,
         };
       }
 }
