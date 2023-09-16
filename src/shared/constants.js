@@ -673,8 +673,7 @@ module.exports = Object.freeze({
         sprite: 'archery_disciple.png',
         description: 'eager and sharp',
         outfit: 'daopao',
-        skill: 'slash',
-        // skill: 'qi_shot',
+        skill: 'qi_shot',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -685,8 +684,7 @@ module.exports = Object.freeze({
         sprite: 'preschooler.png',
         description: 'playful and energetic',
         outfit: 'tiny_dress',
-        // skill: 'temper_tantrum',
-        skill: 'slash',
+        skill: 'temper_tantrum',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -708,8 +706,7 @@ module.exports = Object.freeze({
         sprite: 'businessman.png',
         description: 'hardworking and professional',
         outfit: 'work_suit',
-        // skill: 'cash_flow',
-        skill: 'slash',
+        skill: 'cash_flow',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -720,8 +717,7 @@ module.exports = Object.freeze({
         sprite: 'battle_maid.png',
         description: 'reliable and thorough',
         outfit: 'lofty_dress',
-        // skill: 'clean_finish',
-        skill: 'slash',
+        skill: 'clean_finish',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -905,26 +901,37 @@ module.exports = Object.freeze({
           player.dodges = 1;
         },
     },
-    // qi_shot: {
-    //     name: 'Qi Shot',
-    //     sprite: 'qi_shot',
-    //     rank: 'Unique',
-    //     description: 'Deal 100% Luck damage to 3 targets within 2 tiles',
-    //     mpCost: 10,
-    //     performEffect: function() {
-    //         this.game.player.multiSkillAttack(this, this.game.player.luck * 2, 2, 3);
-    //     },
-    // },
-    // temper_tantrum: {
-    //     name: 'Temper Tantrum',
-    //     sprite: 'temper_tantrum',
-    //     rank: 'Unique',
-    //     description: 'Deal 1 to 50 damage in a 2 tile radius',
-    //     mpCost: 5,
-    //     performEffect: function() {
-    //         this.game.player.selfAoeSkillAttack(this, RL.Util.random(1,50), 2);
-    //     },
-    // },
+    qi_shot: {
+        name: 'Qi Shot',
+        adj: 'Qi',
+        noun: 'Shot',
+        sprite: 'qi_shot.png',
+        rank: 'S',
+        description: '300% Medium-range Luck damage',
+        maxCd: TICK_RATE * 10,
+        range: 2,
+        damage: 1,
+        mpCost: 40,
+        cast: function(player, coords) {
+            this.game.playerSkillAttack(player, coords, player.luck * 3, this.range, this.splash, this.radial);
+        },
+    },
+    temper_tantrum: {
+        name: 'Temper Tantrum',
+        adj: 'Temper',
+        noun: 'Tantrum',
+        sprite: 'temper_tantrum.png',
+        rank: 'C',
+        description: '1 ~ 50 medium-range radial damage',
+        maxCd: TICK_RATE * 7,
+        range: 2,
+        damage: 1,
+        radial: true,
+        mpCost: 10,
+        cast: function(player, coords) {
+            this.game.playerSkillAttack(player, coords, Math.floor(Math.random() * 50) + 1, this.range, this.splash, this.radial);
+        },
+    },
     foxfire: {
         name: 'Foxfire',
         adj: 'Fox',
@@ -938,28 +945,31 @@ module.exports = Object.freeze({
         splash: true,
         mpCost: 35,
     },
-    // cash_flow: {
-    //     name: 'Cash Flow',
-    //     sprite: 'cash_flow',
-    //     rank: 'Unique',
-    //     description: 'Obtain 1 to 100 gold',
-    //     mpCost: 10,
-    //     performEffect: function() {
-    //         var gold = RL.Util.random(1,100);
-    //         this.game.player.gold += gold;
-    //         this.game.console.log(this.game.console.wrap(this.game.player) + ' gained ' + gold + ' gold');
-    //     },
-    // },
-    // clean_finish: {
-    //     name: 'Clean Finish',
-    //     sprite: 'clean_finish',
-    //     rank: 'Unique',
-    //     description: 'Deal 200% Agility damage to an enemy within 1 tile',
-    //     mpCost: 5,
-    //     performEffect: function() {
-    //         this.game.player.skillAttack(this, this.game.player.agility * 2, 1);
-    //     },
-    // },
+    cash_flow: {
+        name: 'Cash Flow',
+        adj: 'Cashing',
+        noun: 'Income',
+        sprite: 'cash_flow.png',
+        rank: 'B',
+        description: 'Obtain 1 to 100 gold',
+        maxCd: TICK_RATE * 10,
+        mpCost: 20,
+        cast: function(player, coords) {
+          player.gold += Math.floor(Math.random() * 100) + 1;
+        },
+    },
+    clean_finish: {
+        name: 'Clean Finish',
+        adj: 'Clean',
+        noun: 'Finish',
+        sprite: 'clean_finish.png',
+        rank: 'A',
+        description: '4k close-range damage',
+        maxCd: TICK_RATE * 12,
+        range: 1,
+        damage: 4000,
+        mpCost: 30,
+    },
     embrace: {
         name: 'Embrace',
         adj: 'Embracing',
