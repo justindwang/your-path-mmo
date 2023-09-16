@@ -425,7 +425,9 @@ var ITEM_TYPES = {
                 player.jobs.push(newJob);
                 var newOutfit = new Outfit(newJob.outfit);
                 player.outfits.push(newOutfit);
-                player.skills.push(new Skill(this.game, newJob.skill));
+                if(!arrFind(player.skills, 'type', newJob.skill)){
+                    player.skills.push(new Skill(this.game, newJob.skill));
+                }
                 socket.emit(Constants.MSG_TYPES.LOG_MESSAGE, {type:'inventory', message: '- ' +newJob.name+ ' added to jobs -<br>- '+ newOutfit.name + ' added to outfits -'});
             }
         },
