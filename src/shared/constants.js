@@ -673,7 +673,8 @@ module.exports = Object.freeze({
         sprite: 'archery_disciple.png',
         description: 'eager and sharp',
         outfit: 'daopao',
-        skill: 'qi_shot',
+        skill: 'slash',
+        // skill: 'qi_shot',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -684,7 +685,8 @@ module.exports = Object.freeze({
         sprite: 'preschooler.png',
         description: 'playful and energetic',
         outfit: 'tiny_dress',
-        skill: 'temper_tantrum',
+        // skill: 'temper_tantrum',
+        skill: 'slash',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -706,7 +708,8 @@ module.exports = Object.freeze({
         sprite: 'businessman.png',
         description: 'hardworking and professional',
         outfit: 'work_suit',
-        skill: 'cash_flow',
+        // skill: 'cash_flow',
+        skill: 'slash',
         equipEffect: function() {
         },
         unequipEffect: function(){
@@ -717,7 +720,8 @@ module.exports = Object.freeze({
         sprite: 'battle_maid.png',
         description: 'reliable and thorough',
         outfit: 'lofty_dress',
-        skill: 'clean_finish',
+        // skill: 'clean_finish',
+        skill: 'slash',
         equipEffect: function() {
         },
         unequipEffect: function(){
