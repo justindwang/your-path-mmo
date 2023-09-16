@@ -188,10 +188,10 @@ class Floor {
             spawnY = random(1, Constants.MAP_SIZE - 1);
         } while (this.game.getObjectsAtPostion(this.number, spawnX, spawnY).length > 0 || this.map.get(spawnX, spawnY).name !='Floor');
         var type = getRandomFromRate(this.furnitureSpawner);
-        if(Constants.FURNITURE_TYPES[type])
-            this.furnitureManager.add(this.number, spawnX, spawnY, new Furniture(this.game, type));
-        else
-            this.itemManager.add(this.number, spawnX, spawnY, new Item(this.game, type));
+        // if(Constants.FURNITURE_TYPES[type])
+        this.furnitureManager.add(this.number, spawnX, spawnY, new Furniture(this.game, type));
+        // else
+        //     this.itemManager.add(this.number, spawnX, spawnY, new Item(this.game, type));
     }
 }
 module.exports = Floor;

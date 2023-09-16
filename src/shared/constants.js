@@ -117,8 +117,7 @@ module.exports = Object.freeze({
         furnitureSpawner: {
           boulder: 0.421,
           mud: 0.28,
-          puddle: 0.28,
-          mushroom: 0.014,
+          puddle: 0.294,
           crate: 0.005,
         },
         floorBgColor: COLORS.cave_floor,
