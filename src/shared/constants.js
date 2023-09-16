@@ -921,16 +921,19 @@ module.exports = Object.freeze({
     //         this.game.player.selfAoeSkillAttack(this, RL.Util.random(1,50), 2);
     //     },
     // },
-    // foxfire: {
-    //     name: 'Foxfire',
-    //     sprite: 'foxfire',
-    //     rank: 'Unique',
-    //     description: 'Deal 150% Intelligence damage to 5 targets within 3 tiles',
-    //     mpCost: 20,
-    //     performEffect: function() {
-    //         this.game.player.multiSkillAttack(this, Math.ceil(this.game.player.intelligence * 1.5), 3, 5);
-    //     },
-    // },
+    foxfire: {
+        name: 'Foxfire',
+        adj: 'Fox',
+        noun: 'Fires',
+        sprite: 'foxfire.png',
+        rank: 'A',
+        description: '2k medium-range splash damage',
+        maxCd: TICK_RATE * 10,
+        range: 2,
+        damage: 2000,
+        splash: true,
+        mpCost: 35,
+    },
     // cash_flow: {
     //     name: 'Cash Flow',
     //     sprite: 'cash_flow',
