@@ -101,6 +101,8 @@ const ASSET_NAMES = [
   'photosynthesis.png',
   'zen_strike.png',
   'haste.png',
+  'qi_shot.png',
+  'foxfire.png',
   'bouncy.png',
   'tunnel.png',
   'feral_claw.png',
