@@ -28,23 +28,31 @@ app.use(express.static('public'));
 const compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler));
 
-// Listen on http
-// const httpPort = process.env.HTTP_PORT || 80;
-// const server = app.listen(httpPort);
-// console.log(`Server listening on port ${httpPort}`);
+// listen on 3000
+if (process.env.NODE_ENV === 'local') {
+  const server = app.listen(3000);
+  console.log('Server listening on port 3000');
+  var io = socketio(server);
+} else {
+  // Listen on http
+  // const httpPort = process.env.HTTP_PORT || 80;
+  // const server = app.listen(httpPort);
+  // console.log(`Server listening on port ${httpPort}`);
 
-// Listen on https
-const httpsPort = process.env.HTTPS_PORT || 443;
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/fullchain.pem', 'utf8');
-const credentials = { key: privateKey, cert: certificate };
+  // Listen on https
+  const httpsPort = process.env.HTTPS_PORT || 443;
+  const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/privkey.pem', 'utf8');
+  const certificate = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/fullchain.pem', 'utf8');
+  const credentials = { key: privateKey, cert: certificate };
 
-const httpsServer = https.createServer(credentials, app);
-httpsServer.listen(httpsPort);
-console.log(`Server listening on port ${httpsPort}`);
+  const httpsServer = https.createServer(credentials, app);
+  httpsServer.listen(httpsPort);
+  console.log(`Server listening on port ${httpsPort}`);
+  var io = socketio(httpsServer);
+}
 
 // Setup socket.io
-const io = socketio(httpsServer);
+// const io = socketio(httpsServer);
 
 // Listen for socket.io connections
 io.on('connection', socket => {

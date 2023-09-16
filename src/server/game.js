@@ -559,8 +559,11 @@ class Game {
 
   // networking functions
   addPlayer(socket, name, job, discordId) {
-    this.sockets[socket.id] = socket;
 
+    // making sure the same socket doesnt request more players
+    if(this.sockets[socket.id])
+      return;
+    this.sockets[socket.id] = socket;
     // Generate a position to start this player at.
     let pos = this.generatePlayerStartPosition(1);
     var player = new Player(this, socket.id, name, job, pos[0], pos[1], discordId);
@@ -578,6 +581,7 @@ class Game {
     //   case 'ninja': case 'kunoichi': skill = 'backstab'; break;
     // }
     player.skills.push(new Skill(this, player.job.skill));
+    // console.log('adding player with name: ' + name + ' at ('+ pos[0] + ', ' + pos[1] + ') called by socket: '+ socket.id);
   }
 
   connectPlayer(socket, playerData) {
