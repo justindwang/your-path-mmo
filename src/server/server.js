@@ -5,8 +5,6 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const socketio = require('socket.io');
 const path = require('path');
-// const https = require('https');
-// const fs = require('fs');
 
 const Constants = require('../shared/constants');
 const Game = require('./game');
@@ -14,24 +12,20 @@ const webpackConfig = require('../../webpack.dev.js');
 
 // Setup an Express server
 const app = express();
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../client')));
 
-// if (process.env.NODE_ENV === 'development') {
-//   // Setup Webpack for development
-//   const compiler = webpack(webpackConfig);
-//   app.use(webpackDevMiddleware(compiler));
-// } else {
-//   // Static serve the dist/ folder in production
-//   app.use(express.static('dist'));
-// }
-
-// development mode on pm2
-const compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler));
+if (process.env.NODE_ENV === 'development') {
+  // Setup Webpack for development
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler));
+} else {
+  // Static serve the dist/ folder in production
+  app.use(express.static(path.join(__dirname, '../../dist')));
+}
 
 // listen on 3000
-if (process.env.NODE_ENV === 'local') {
+if (process.env.NODE_ENV === 'development') {
   const server = app.listen(3000);
   console.log('Server listening on port 3000');
   var io = socketio(server);
