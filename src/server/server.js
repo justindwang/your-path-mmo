@@ -13,6 +13,7 @@ const webpackConfig = require('../../webpack.dev.js');
 // Setup an Express server
 const app = express();
 app.use(express.static(path.join(__dirname, '../../public')));
+app.use('/assets', express.static(path.join(__dirname, '../../public/assets')));
 app.use(express.static(path.join(__dirname, '../client')));
 
 if (process.env.NODE_ENV === 'development') {
