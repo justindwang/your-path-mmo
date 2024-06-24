@@ -40,14 +40,14 @@ if (process.env.NODE_ENV === 'local') {
   // console.log(`Server listening on port ${httpPort}`);
 
   // Listen on https
-  const httpPort = process.env.HTTPS_PORT || 80;
+  // const httpPort = process.env.HTTPS_PORT || 80;
   // const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/privkey.pem', 'utf8');
   // const certificate = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/fullchain.pem', 'utf8');
   // const credentials = { key: privateKey, cert: certificate };
 
   // const httpsServer = https.createServer(credentials, app);
-  const server = app.listen(httpPort);
-  console.log(`Server listening on port ${httpPort}`);
+  const server = app.listen(3000);
+  console.log('Server listening on port 3000');
   var io = socketio(server);
 }
 

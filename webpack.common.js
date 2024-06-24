@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    game: './src/client/index.js',
+    game: path.resolve(__dirname, '../client/js/app.js'),
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -57,7 +57,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/client/html/index.html',
+      template: path.resolve(__dirname, '../client/html/index.html'),
     }),
   ],
 };
