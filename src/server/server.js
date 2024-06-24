@@ -4,8 +4,8 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const socketio = require('socket.io');
-const https = require('https');
-const fs = require('fs');
+// const https = require('https');
+// const fs = require('fs');
 
 const Constants = require('../shared/constants');
 const Game = require('./game');
@@ -40,15 +40,15 @@ if (process.env.NODE_ENV === 'local') {
   // console.log(`Server listening on port ${httpPort}`);
 
   // Listen on https
-  const httpsPort = process.env.HTTPS_PORT || 443;
-  const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/privkey.pem', 'utf8');
-  const certificate = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/fullchain.pem', 'utf8');
-  const credentials = { key: privateKey, cert: certificate };
+  const httpPort = process.env.HTTPS_PORT || 80;
+  // const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/privkey.pem', 'utf8');
+  // const certificate = fs.readFileSync('/etc/letsencrypt/live/yourpathmmo.com/fullchain.pem', 'utf8');
+  // const credentials = { key: privateKey, cert: certificate };
 
-  const httpsServer = https.createServer(credentials, app);
-  httpsServer.listen(httpsPort);
-  console.log(`Server listening on port ${httpsPort}`);
-  var io = socketio(httpsServer);
+  // const httpsServer = https.createServer(credentials, app);
+  const server = app.listen(httpPort);
+  console.log(`Server listening on port ${httpPort}`);
+  var io = socketio(server);
 }
 
 // Setup socket.io
